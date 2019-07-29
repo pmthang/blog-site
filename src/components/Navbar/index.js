@@ -42,8 +42,8 @@ const LogoutView = () => {
         </Link>
       </li>
       <li className="nav-item dropdown">
-        <Link className="dropdown-item" to="/register">
-          Register
+        <Link className="dropdown-item" to="/signup">
+          Signup
         </Link>
       </li>
     </>

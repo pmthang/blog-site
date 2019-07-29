@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { login } from "../../actions/auth";
-class Login extends Component {
+import { signup } from "../../actions/auth";
+class Signup extends Component {
   state = {
+    username: "",
     email: "",
     password: "",
   };
@@ -13,15 +14,37 @@ class Login extends Component {
   };
   onSubmit = e => {
     e.preventDefault();
-    this.props.login(this.state, this.props.history);
+    this.props.signup(this.state, this.props.history);
   };
   render() {
-    console.log(this.props);
+    const { username, email, password } = this.state;
     return (
       <div className="card">
-        <div className="card-header">Login</div>
+        <div className="card-header">Sign Up</div>
         <div className="card-body">
           <form onSubmit={this.onSubmit}>
+            <div className="form-group row">
+              <label
+                htmlFor="name"
+                className="col-sm-4 col-form-label text-md-right"
+              >
+                Username
+              </label>
+              <div className="col-md-6">
+                <input
+                  onChange={this.onChange}
+                  type="text"
+                  className="form-control is-invalid"
+                  name="username"
+                  value={username}
+                  required
+                  autoFocus
+                />
+                <span className="invalid-feedback">
+                  <strong>The name is required.</strong>
+                </span>
+              </div>
+            </div>
             <div className="form-group row">
               <label
                 htmlFor="email"
@@ -34,10 +57,9 @@ class Login extends Component {
                   onChange={this.onChange}
                   type="text"
                   className="form-control"
-                  value={this.state.email}
                   name="email"
+                  value={email}
                   required
-                  autoFocus
                 />
               </div>
             </div>
@@ -53,16 +75,17 @@ class Login extends Component {
                   onChange={this.onChange}
                   type="password"
                   className="form-control"
-                  value={this.state.password}
                   name="password"
+                  value={password}
                   required
                 />
               </div>
             </div>
+
             <div className="form-group row mb-0">
               <div className="col-md-8 offset-md-4">
                 <button type="submit" className="btn btn-primary">
-                  Login
+                  Sign Up
                 </button>
               </div>
             </div>
@@ -78,5 +101,5 @@ export default connect(
     loading: auth.loading,
     error: auth.error,
   }),
-  { login },
-)(Login);
+  { signup },
+)(Signup);

@@ -10,7 +10,7 @@ const AppWithRouter = withRouter(App);
 
 ReactDOM.render(
   <Provider store={store}>
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <AppWithRouter />
     </BrowserRouter>
   </Provider>,

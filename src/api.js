@@ -31,7 +31,7 @@ const Auth = {
   },
   signup: (username, email, password) => {
     const payload = { user: { username, email, password } };
-    return client.post(`user`, payload);
+    return client.post(`/users`, payload);
   },
   getUser: () => client.get(`/user`),
 };

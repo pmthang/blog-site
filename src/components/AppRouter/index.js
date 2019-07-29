@@ -3,13 +3,13 @@ import { Route } from "react-router-dom";
 
 import Home from "../../containers/Home";
 import Login from "../../containers/Login";
-import Register from "../../containers/Register";
+import Signup from "../../containers/Signup";
 import Article from "../../containers/Article";
 const AppRouter = () => (
   <>
     <Route path="/" exact component={Home} />
     <Route path="/login" component={Login} />
-    <Route path="/register" component={Register} />
+    <Route path="/signup" component={Signup} />
     <Route path="/article/:id" component={Article} />
   </>
 );
