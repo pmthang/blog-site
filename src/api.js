@@ -13,7 +13,7 @@ const client = {
     axios.post(`${API_ROOT}${path}`, payload).then(resData),
   put: (path, payload) =>
     axios.put(`${API_ROOT}${path}`, payload).then(resData),
-  del: path => axios.del(`${API_ROOT}${path}`).then(resData),
+  del: path => axios.delete(`${API_ROOT}${path}`).then(resData),
 };
 
 const Articles = {

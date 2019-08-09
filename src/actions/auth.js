@@ -10,9 +10,9 @@ import {
   SIGNUP_FAILED,
 } from "../reducer/auth";
 import { APP_LOAD } from "../reducer/app";
+
 export const login = ({ email, password }, history) => async dispatch => {
   dispatch({ type: LOGIN_REQUEST });
-
   try {
     const data = await api.Auth.login(email, password);
     history.push("/");
@@ -31,10 +31,10 @@ export const signup = (
   dispatch({ type: SIGNUP_REQUEST });
   try {
     const data = await api.Auth.signup(username, email, password);
-    history.push("/");
+    history.replace("/");
     localStorage.setItem("token", data.user.token);
     dispatch({ type: SIGNUP_SUCCESS, payload: data.user });
-    dispatch({ type: APP_LOAD, payload: data.user });
+    dispatch({ type: APP_LOAD });
   } catch (error) {
     dispatch({ type: SIGNUP_FAILED, error });
   }

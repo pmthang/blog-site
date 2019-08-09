@@ -5,6 +5,7 @@ import Home from "../../containers/Home";
 import Login from "../../containers/Login";
 import Signup from "../../containers/Signup";
 import Article from "../../containers/Article";
+
 const AppRouter = () => (
   <>
     <Route path="/" exact component={Home} />

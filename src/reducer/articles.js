@@ -4,6 +4,8 @@ export const REQUEST_ARTICLES_FAILED = "REQUEST_ARTICLES_FAILED";
 export const SET_SINGLE_ARTICLE = "SET_SINGLE_ARTICLE";
 export const FILTER_TAG = "FILTER_TAG";
 export const REQUEST_SINGLE_ARTICLE = "REQUEST_SINGLE_ARTICLE";
+export const FAVORITE = "FAVORITE";
+export const UNFAVORITE = "UNFAVORITE";
 const articles = (state = {}, action) => {
   switch (action.type) {
     case REQUEST_ARTICLES:
@@ -41,7 +43,21 @@ const articles = (state = {}, action) => {
         tag: action.tag,
         articles: action.payload,
       };
-
+    case FAVORITE:
+    case UNFAVORITE:
+      return {
+        ...state,
+        articles: state.articles.map(article => {
+          if (article.slug === action.slug) {
+            return {
+              ...article,
+              favorite: action.payload.favorited,
+              favoritesCount: action.payload.favoritesCount,
+            };
+          }
+          return article;
+        }),
+      };
     default:
       return state;
   }
